@@ -1,3 +1,5 @@
-[webapps]
+[webservers]
 192.168.56.11
+
+[dbservers]
 192.168.56.12

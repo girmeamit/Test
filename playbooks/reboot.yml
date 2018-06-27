@@ -1,5 +1,5 @@
 ---
-- hosts: webapps
+- hosts: webservers
   tasks:
     - name: Reboot hosts
       shell: /sbin/shutdown -r +1
