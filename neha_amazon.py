@@ -9,39 +9,24 @@ def registration():
     while attempt <= 3 :
         print("Attempt no: ", attempt)
         password = input ("Enter your Password:")
-        cond = False
+        numeric_cond = False
+        upper_cond = False
+        lower_cond = False
         if len(password)>6 and len(password)<20 and re.search(r'[!@#$%^&*()]', password):
             print("Passes 1st condition")
-            for i in password:
-                if i.isnumeric():
-                    print("Numeric character present")
-                    cond = True
-            for i in password:
-                if i.isupper():
-                    print("Uppercase present")
-                    cond = True
-            for i in password:
-                if i.islower():
-                    print("Lowercase present")
-                    cond = True
-                    attempt = 4
-                    return username, password
-        else:
-            print("CHECKING PASSWORD: ", attempt)
-            attempt += 1
-            return None,None
+            if (any(i.isupper() for i in password) and any(i.islower() for i in password) and any(i.isnumeric() for i in password)):
+                print("Passes 2nd condition")
+                attempt = 4
+                return username, password
+            else:
+                attempt += 1
 
 try:
     username, password = registration()
     if password:
         print("Your login is: ", password )
-    else:
-        print("Password check failed")
 except:
-    print("An exception occurred")
-
-
-
+    print("Password check failed")
 
 """        if len(password)>6 and len(password)<20 and re.search(r'[!@#$%^&*()]',password) :
             if password.isnumeric() and password.isupper() and password.islower():
